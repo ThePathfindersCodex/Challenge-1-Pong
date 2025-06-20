@@ -1,0 +1,32 @@
+[gd_scene load_steps=6 format=3 uid="uid://dkk87h8eoujih"]
+
+[ext_resource type="Texture2D" uid="uid://xeogvtbyos6v" path="res://Sprites/Paddle 1.png" id="1_fntsw"]
+[ext_resource type="Script" path="res://Scripts/Obstacle.gd" id="1_kb8as"]
+[ext_resource type="Shader" path="res://Shaders/obstacle.gdshader" id="2_f4qtg"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_3kcud"]
+shader = ExtResource("2_f4qtg")
+shader_parameter/speed_phase = 1.0
+shader_parameter/speed_rotation = 1.0
+shader_parameter/offset_phase = 0.0
+shader_parameter/offset_rotation = 0.0
+shader_parameter/frequency = 2.0
+shader_parameter/scale = 1.0
+shader_parameter/contrast = 1.0
+shader_parameter/color1 = Color(1, 1, 1, 1)
+shader_parameter/color2 = Color(0, 0, 0, 1)
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_qmsug"]
+height = 152.0
+
+[node name="Obstacle" type="CharacterBody2D" groups=["paddle"]]
+motion_mode = 1
+script = ExtResource("1_kb8as")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+self_modulate = Color(0.262932, 0.262932, 0.262932, 1)
+material = SubResource("ShaderMaterial_3kcud")
+texture = ExtResource("1_fntsw")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_qmsug")

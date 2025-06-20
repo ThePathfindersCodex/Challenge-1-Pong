@@ -1,0 +1,43 @@
+[gd_scene load_steps=9 format=3 uid="uid://cf4f5vxi2iw5y"]
+
+[ext_resource type="Script" path="res://Scripts/Ball.gd" id="1_6wxgm"]
+[ext_resource type="Texture2D" uid="uid://tkw8cps3ic8l" path="res://Sprites/Ball.png" id="2_3sxx6"]
+[ext_resource type="AudioStream" uid="uid://cmcajuiurnlol" path="res://Sounds/ball bounce sound.wav" id="3_cegqq"]
+[ext_resource type="Shader" path="res://Shaders/ball_trail.gdshader" id="4_mqbwy"]
+[ext_resource type="Script" path="res://Scripts/Ball Trail.gd" id="4_y5ece"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_yqlb8"]
+shader = ExtResource("4_mqbwy")
+shader_parameter/strength = 0.5
+shader_parameter/speed = 2.0
+shader_parameter/angle = 45.0
+
+[sub_resource type="Curve" id="Curve_xuyfb"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.977941, 0.0549451), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_2q0g6"]
+radius = 21.0
+
+[node name="Ball" type="CharacterBody2D" groups=["ball"]]
+script = ExtResource("1_6wxgm")
+
+[node name="Line2D" type="Line2D" parent="."]
+z_index = -1
+material = SubResource("ShaderMaterial_yqlb8")
+width = 20.0
+width_curve = SubResource("Curve_xuyfb")
+default_color = Color(1, 1, 1, 0.913725)
+script = ExtResource("4_y5ece")
+length = 25
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_3sxx6")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_2q0g6")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+unique_name_in_owner = true
+stream = ExtResource("3_cegqq")
+volume_db = -14.0

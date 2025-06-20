@@ -1,0 +1,35 @@
+[gd_scene load_steps=4 format=3 uid="uid://cl355oijqdwnm"]
+
+[ext_resource type="Script" path="res://Scripts/Score Updater.gd" id="1_il82o"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_12whi"]
+font_size = 40
+outline_size = 10
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_cgmx4"]
+font_size = 40
+outline_size = 10
+outline_color = Color(0, 0, 0, 1)
+
+[node name="Score UI (HBox)" type="HBoxContainer"]
+anchors_preset = 10
+anchor_right = 1.0
+grow_horizontal = 2
+alignment = 1
+
+[node name="P1 Score Label" type="Label" parent="."]
+layout_mode = 2
+text = "Red: 0"
+label_settings = SubResource("LabelSettings_12whi")
+script = ExtResource("1_il82o")
+
+[node name="VSeparator" type="VSeparator" parent="."]
+layout_mode = 2
+
+[node name="P2 Score Label" type="Label" parent="."]
+layout_mode = 2
+text = "Blue: 0"
+label_settings = SubResource("LabelSettings_cgmx4")
+script = ExtResource("1_il82o")
+playerID = 2

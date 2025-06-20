@@ -1,0 +1,6 @@
+CC BY-NC-SA 3.0 License
+Water shader - https://godotshaders.com/shader/cosine-water-2/
+
+CC0 License
+https://godotshaders.com/shader/gabor-patch/
+https://godotshaders.com/shader/moving-rainbow-gradient/

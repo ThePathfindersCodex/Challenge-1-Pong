@@ -1,0 +1,110 @@
+[gd_scene load_steps=12 format=3 uid="uid://bajpqe5n7jlsp"]
+
+[ext_resource type="PackedScene" uid="uid://b65oqwwefubjn" path="res://Scenes/paddle.tscn" id="1_3jyms"]
+[ext_resource type="Script" path="res://Scripts/Game Controller.gd" id="1_wus8d"]
+[ext_resource type="PackedScene" uid="uid://ky02xvdhop7s" path="res://Scenes/goal.tscn" id="3_e14uh"]
+[ext_resource type="Shader" path="res://Shaders/board.gdshader" id="5_a6vah"]
+[ext_resource type="PackedScene" uid="uid://cgtq656nrj8t4" path="res://Scenes/countdown_animation.tscn" id="5_otbq1"]
+[ext_resource type="PackedScene" uid="uid://cl355oijqdwnm" path="res://Scenes/score UI.tscn" id="5_vxyu7"]
+[ext_resource type="PackedScene" uid="uid://dkk87h8eoujih" path="res://Scenes/obstacle.tscn" id="6_7a0ud"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_y4wki"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_xc3qn"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_u3c8u"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_qtb5a"]
+shader = ExtResource("5_a6vah")
+shader_parameter/uv_scale = 0.9
+shader_parameter/color_alpha = 0.5
+
+[node name="Main" type="Node2D"]
+script = ExtResource("1_wus8d")
+
+[node name="Paddle" parent="." instance=ExtResource("1_3jyms")]
+position = Vector2(57, 297)
+
+[node name="Paddle2" parent="." instance=ExtResource("1_3jyms")]
+position = Vector2(1092, 289)
+paddleID = 2
+
+[node name="Top Wall" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Top Wall"]
+rotation = 3.14159
+shape = SubResource("WorldBoundaryShape2D_y4wki")
+
+[node name="Bottom Wall" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bottom Wall"]
+position = Vector2(0, 650)
+shape = SubResource("WorldBoundaryShape2D_xc3qn")
+
+[node name="Goal" parent="." instance=ExtResource("3_e14uh")]
+position = Vector2(0, 318)
+GoalID = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Goal"]
+rotation = 1.5708
+shape = SubResource("WorldBoundaryShape2D_u3c8u")
+
+[node name="Goal2" parent="." instance=ExtResource("3_e14uh")]
+position = Vector2(1152, 318)
+rotation = 3.14159
+GoalID = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Goal2"]
+rotation = 1.5708
+shape = SubResource("WorldBoundaryShape2D_u3c8u")
+
+[node name="Obstacle" parent="." instance=ExtResource("6_7a0ud")]
+position = Vector2(572, 294)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = -1
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
+material = SubResource("ShaderMaterial_qtb5a")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(1, 1, 0, 1)
+
+[node name="Countdown Animation" parent="CanvasLayer" instance=ExtResource("5_otbq1")]
+offset_top = -35.0
+offset_bottom = -35.0
+
+[node name="Score UI (HBox)" parent="CanvasLayer" instance=ExtResource("5_vxyu7")]
+
+[node name="P1Controls" type="Label" parent="CanvasLayer"]
+unique_name_in_owner = true
+offset_left = 6.0
+offset_top = 3.0
+offset_right = 46.0
+offset_bottom = 26.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(1, 0, 0, 0.490196)
+theme_override_constants/outline_size = 2
+theme_override_font_sizes/font_size = 20
+text = "P1"
+
+[node name="P2Controls" type="Label" parent="CanvasLayer"]
+unique_name_in_owner = true
+offset_left = 943.0
+offset_top = 3.0
+offset_right = 983.0
+offset_bottom = 31.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 1, 0.490196)
+theme_override_constants/outline_size = 2
+theme_override_font_sizes/font_size = 20
+text = "P2"
+horizontal_alignment = 2
+
+[node name="BallSpeed" type="Line2D" parent="CanvasLayer"]
+unique_name_in_owner = true
+position = Vector2(0, 644)
+points = PackedVector2Array(0, 0, 0, 0)
