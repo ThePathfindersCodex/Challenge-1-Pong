@@ -12,22 +12,42 @@ font_size = 40
 outline_size = 10
 outline_color = Color(0, 0, 0, 1)
 
-[node name="Score UI (HBox)" type="HBoxContainer"]
-anchors_preset = 10
-anchor_right = 1.0
-grow_horizontal = 2
+[node name="Score UI" type="Node2D"]
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="."]
+offset_right = 1148.0
+offset_bottom = 55.0
+size_flags_horizontal = 6
+
+[node name="ColorRect" type="ColorRect" parent="HBoxContainer2"]
+custom_minimum_size = Vector2(125, 55)
+layout_mode = 2
+size_flags_horizontal = 10
+color = Color(0.371817, 5.62528e-07, 9.62615e-08, 1)
+
+[node name="ColorRect2" type="ColorRect" parent="HBoxContainer2"]
+custom_minimum_size = Vector2(135, 55)
+layout_mode = 2
+size_flags_horizontal = 2
+color = Color(0.000481981, 4.58445e-05, 0.383181, 1)
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+offset_left = 4.0
+offset_right = 1152.0
+offset_bottom = 55.0
+size_flags_horizontal = 3
 alignment = 1
 
-[node name="P1 Score Label" type="Label" parent="."]
+[node name="P1 Score Label" type="Label" parent="HBoxContainer"]
 layout_mode = 2
 text = "Red: 0"
 label_settings = SubResource("LabelSettings_12whi")
 script = ExtResource("1_il82o")
 
-[node name="VSeparator" type="VSeparator" parent="."]
+[node name="VSeparator" type="VSeparator" parent="HBoxContainer"]
 layout_mode = 2
 
-[node name="P2 Score Label" type="Label" parent="."]
+[node name="P2 Score Label" type="Label" parent="HBoxContainer"]
 layout_mode = 2
 text = "Blue: 0"
 label_settings = SubResource("LabelSettings_cgmx4")
