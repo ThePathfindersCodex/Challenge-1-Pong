@@ -4,12 +4,12 @@
 
 [sub_resource type="LabelSettings" id="LabelSettings_12whi"]
 font_size = 40
-outline_size = 10
+outline_size = 4
 outline_color = Color(0, 0, 0, 1)
 
 [sub_resource type="LabelSettings" id="LabelSettings_cgmx4"]
 font_size = 40
-outline_size = 10
+outline_size = 4
 outline_color = Color(0, 0, 0, 1)
 
 [node name="Score UI" type="Node2D"]
@@ -20,7 +20,7 @@ offset_bottom = 55.0
 size_flags_horizontal = 6
 
 [node name="ColorRect" type="ColorRect" parent="HBoxContainer2"]
-custom_minimum_size = Vector2(125, 55)
+custom_minimum_size = Vector2(130, 55)
 layout_mode = 2
 size_flags_horizontal = 10
 color = Color(0.371817, 5.62528e-07, 9.62615e-08, 1)
