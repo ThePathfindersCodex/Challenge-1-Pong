@@ -12,7 +12,7 @@ func _ready() -> void:
 func _process(_delta: float) -> void:
 	rotation += rot_speed
 	if (rotation >= 360):
-		rotation==0
+		rotation = 0
 		
 	global_position.y += move_speed * move_dir
 	global_position.y = clamp(global_position.y, 80, get_viewport_rect().size.y -60)
