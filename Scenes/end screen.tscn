@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://c8pw3fmn27583"]
+[gd_scene load_steps=12 format=3 uid="uid://c8pw3fmn27583"]
 
 [ext_resource type="PackedScene" uid="uid://cl355oijqdwnm" path="res://Scenes/score UI.tscn" id="1_7t5u8"]
 [ext_resource type="Shader" path="res://Shaders/board.gdshader" id="1_swwfc"]
@@ -8,13 +8,34 @@
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_x1i3h"]
 shader = ExtResource("1_swwfc")
-shader_parameter/uv_scale = 0.9
-shader_parameter/color_alpha = 0.5
+shader_parameter/mouse = null
+shader_parameter/time = null
+shader_parameter/speed2 = 0.2
 
 [sub_resource type="LabelSettings" id="LabelSettings_hfqg5"]
 font_size = 100
 outline_size = 15
 outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_o6pu6"]
+skew = Vector2(1, 0)
+corner_radius_top_left = 25
+corner_radius_bottom_right = 25
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_sxnrb"]
+skew = Vector2(1, 0)
+corner_radius_top_right = 25
+corner_radius_bottom_left = 25
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_h61r3"]
+skew = Vector2(-1, 0)
+corner_radius_top_right = 25
+corner_radius_bottom_left = 25
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kmn2j"]
+skew = Vector2(-1, 0)
+corner_radius_top_left = 25
+corner_radius_bottom_right = 25
 
 [node name="ColorRect" type="ColorRect"]
 material = SubResource("ShaderMaterial_x1i3h")
@@ -46,14 +67,18 @@ script = ExtResource("1_wsu2g")
 layout_mode = 2
 size_flags_horizontal = 4
 theme_override_font_sizes/font_size = 50
-text = "Play Again"
+theme_override_styles/hover = SubResource("StyleBoxFlat_o6pu6")
+theme_override_styles/normal = SubResource("StyleBoxFlat_sxnrb")
+text = " Play Again "
 script = ExtResource("2_at5tx")
 
 [node name="Quit" type="Button" parent="VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
 theme_override_font_sizes/font_size = 50
-text = "Quit"
+theme_override_styles/hover = SubResource("StyleBoxFlat_h61r3")
+theme_override_styles/normal = SubResource("StyleBoxFlat_kmn2j")
+text = " Quit "
 script = ExtResource("3_kld0m")
 
 [node name="Score UI (HBox)" parent="VBoxContainer" instance=ExtResource("1_7t5u8")]

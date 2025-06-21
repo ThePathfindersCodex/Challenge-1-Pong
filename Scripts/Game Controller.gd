@@ -7,6 +7,9 @@ signal resetPaddle
 func _ready():
 	ShowControls()
 	StartGame()
+
+func _process(delta):
+	%ColorRect.material.set_shader_parameter("time",%ColorRect.material.get_shader_parameter("time") + delta) 
 	
 func StartGame():
 	countdownAnim = get_tree().get_first_node_in_group("countdown animation")
@@ -56,5 +59,5 @@ func ShowBallSpeed():
 	var cur_vel :float= current_ball.velocity.length()
 	var def_vel :float= current_ball.speed
 	var visual_size :float= cur_vel - def_vel + 1
-	%BallSpeed.points[1].x = visual_size
+	%BallSpeed.size.x = 20 + visual_size
 	
