@@ -82,4 +82,3 @@ text = " Quit "
 script = ExtResource("3_kld0m")
 
 [node name="Score UI (HBox)" parent="VBoxContainer" instance=ExtResource("1_7t5u8")]
-layout_mode = 2
